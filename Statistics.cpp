@@ -23,4 +23,9 @@ namespace analysis {
         const double variance = sum_sq / static_cast<double>(data.size() - 1);
         return std::sqrt(variance);
     }
+    std::shared_ptr<SummaryStats> compute_summary(std::span<const double> data) {
+        const double m = mean(data);
+        const double s = standard_deviation(data, m);
+        return std::make_shared<SummaryStats>(SummaryStats{m, s});
+    }
 }
