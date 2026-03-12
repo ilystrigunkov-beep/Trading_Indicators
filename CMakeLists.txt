@@ -1,14 +1,6 @@
-cmake_minimum_required(VERSION 3.20)
-project(OurProject VERSION 1.0 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.31)
+project(Trading_Indicators)
 
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD 20)
 
-include(CTest)
-
-add_subdirectory(src)
-add_subdirectory(app)
-if (BUILD_TESTING)
-    add_subdirectory(tests)
-endif()
+add_executable(Trading_Indicators main.cpp)
