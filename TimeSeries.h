@@ -1,0 +1,13 @@
+//
+// Created by Aboba on 13.03.2026.
+//
+
+#ifndef TRADING_INDICATORS_TIMESERIES_H
+#define TRADING_INDICATORS_TIMESERIES_H
+
+
+class TimeSeries {
+};
+
+
+#endif //TRADING_INDICATORS_TIMESERIES_H
