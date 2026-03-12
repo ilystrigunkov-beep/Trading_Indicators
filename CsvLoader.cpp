@@ -38,6 +38,14 @@ namespace core {
             }
             return value;
         }
+        long long days_from_civil(int y,unsigned m,unsigned d) {
+            y -= m <= 2;
+            const int era = (y>=0 ? y : y-399) /400;
+            const unsigned yoe = static_cast<unsigned>(y - era * 400);
+            const unsigned doy = (153 *(m+(m>2 ? -3:9))+2)/5 +d-1;
+            const unsigned doe = yoe*365+ yoe/4-yoe/100 +doy;
+            return static_cast<long long>(era) * 146097 + static_cast<long long>(doe) - 719468;
+        }
 
     }
 }
