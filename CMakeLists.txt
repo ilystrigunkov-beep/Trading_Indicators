@@ -6,4 +6,7 @@ set(CMAKE_CXX_STANDARD 23)
 add_executable(Trading_Indicators main.cpp
         Analyzer.h
         SpikeDetector.h
+        SpikeDetector.cpp
+        Statistics.h
+        Statistics.cpp
 )
