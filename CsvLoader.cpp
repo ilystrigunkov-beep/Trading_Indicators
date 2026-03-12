@@ -1,5 +1,6 @@
 
 #include "CsvLoader.h"
+#include "Exceptions.h"
 #include <vector>
 #include <charconv>
 namespace core {
@@ -76,6 +77,36 @@ namespace core {
             catch (...) {
                 return std::nullopt;
             }
+        }
+        double parse_double(const std::string& text, const std::string& field_name) {
+            std::string s = text;
+
+            while (!s.empty() && s.front() == ' ')
+                s.erase(s.begin());
+
+            while (!s.empty() && s.back() == ' ')
+                s.pop_back();
+
+            if (s.size() >= 2 &&
+                ((s.front() =='"' && s.back() =='"') ||
+                 (s.front() =='\'' && s.back() =='\'')))
+            {
+                s = s.substr(1,s.size() - 2);
+            }
+
+            s.erase(std::remove(s.begin(),s.end(),','),s.end());
+            s.erase(std::remove(s.begin(),s.end(),'%'),s.end());
+
+            if (s.empty()) return 0.0;
+
+            double value{};
+            auto result = std::from_chars(s.data(),s.data()+s.size(), value);
+
+            if (result.ec != std::errc()) {
+                throw ParseException("Failed to parse field '" +field_name +"': '" +text + "'");
+            }
+
+            return value;
         }
 
     }
