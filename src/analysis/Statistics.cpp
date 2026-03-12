@@ -1,4 +1,4 @@
-#include "Statistics.h"
+#include "../../include/analysis/Statistics.h"
 #include <cmath>
 namespace analysis {
     double mean(std::span<const double> data) {
