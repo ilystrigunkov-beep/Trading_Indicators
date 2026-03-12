@@ -10,3 +10,6 @@ add_executable(Trading_Indicators main.cpp
         include/analysis/Statistics.h
         src/analysis/Statistics.cpp
 )
+if (BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
