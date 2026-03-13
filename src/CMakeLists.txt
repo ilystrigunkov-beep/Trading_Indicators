@@ -1,9 +1,11 @@
-add_library(analysis
-        ${CMAKE_CURRENT_SOURCE_DIR}/analysis/SpikeDetector.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/analysis/Statistics.cpp
-)
-target_include_directories(analysis
-        PUBLIC
-        ${PROJECT_SOURCE_DIR}/include
+add_library(core
+        core/Candle.cpp
+        core/TimeSeries.cpp
+        core/CsvLoader.cpp
+        core/Exceptions.cpp
 )
 
+target_include_directories(core
+        PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)
