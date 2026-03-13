@@ -1,8 +1,20 @@
 cmake_minimum_required(VERSION 3.31)
 project(Trading_Indicators)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 
+include(CTest)
+
+add_subdirectory(src)
+add_executable(Trading_Indicators main.cpp)
+target_link_libraries(Trading_Indicators
+        PRIVATE
+        analysis
+)
+
+if (BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
 add_executable(Trading_Indicators main.cpp
         src/core/CsvLoader.cpp
         include/core/CsvLoader.h
