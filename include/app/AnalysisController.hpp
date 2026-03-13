@@ -27,7 +27,7 @@ struct AnalysisResult {
 };
 
 class AnalysisController : public QObject {
-    Q_OBJECT;
+    Q_OBJECT
 public:
     explicit AnalysisController(QObject* parent = nullptr);
 
