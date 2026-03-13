@@ -28,6 +28,16 @@ public:
     DoubleMA(std::size_t fast_window, std::size_t slow_window);
 
     [[nodiscard]] const char* name() const noexcept override { return "DoubleMA"; }
+
+    [[nodiscard]] constexpr std::size_t fast_window() const noexcept { return fast_.window(); }
+
+    [[nodiscard]] constexpr std::size_t slow_window() const noexcept { return slow_.window(); }
+
+    [[nodiscard]] std::vector<double> compute_fast(std::span<const double> values) const;
+
+    [[nodiscard]] std::vector<double> compute_slow(std::span<const double> values) const;
+
+    [[nodiscard]] std::vector<Crossover> find_crossovers(std::span<const double> values) const;
 };
 
 } // namespace indicators
