@@ -1,5 +1,5 @@
-#include "../../include/analysis/SpikeDetector.h"
-#include "../../include/analysis/Statistics.h"
+#include "../../include/analysis/SpikeDetector.hpp"
+#include "../../include/analysis/Statistics.hpp"
 namespace analysis {
     DetectionOutcome SpikeDetector::detect(std::span<const double> prices) const {
         if (prices.size() < 2) {

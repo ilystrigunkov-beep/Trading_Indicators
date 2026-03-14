@@ -2,7 +2,7 @@
 // Created by Aboba on 13.03.2026.
 //
 
-#include "../../include/core/Candle.h"
+#include "../../include/core/Candle.hpp"
 
 
 namespace core {

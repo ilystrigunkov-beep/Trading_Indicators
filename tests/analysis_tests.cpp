@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "analysis/SpikeDetector.h"
-#include "analysis/Statistics.h"
+#include "analysis/SpikeDetector.hpp"
+#include "analysis/Statistics.hpp"
 TEST(StatisticsTest, ComputesMeanAndStddev) {
     const double data_arr[] = {1.0, 2.0, 3.0, 4.0};
     std::span data(data_arr, 4);

@@ -1,6 +1,6 @@
 
-#include "../../include/core/CsvLoader.h"
-#include "../../include/core/Exceptions.h"
+#include "../../include/core/CsvLoader.hpp"
+#include "../../include/core/Exceptions.hpp"
 #include <vector>
 #include <charconv>
 namespace core {

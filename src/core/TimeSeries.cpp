@@ -1,4 +1,4 @@
-#include "../../include/core/TimeSeries.h"
+#include "../../include/core/TimeSeries.hpp"
 
 #include <stdexcept>
 
