@@ -23,6 +23,8 @@ private slots:
 private:
     void create_menu();
 
+    std::unique_ptr<AnalysisController> controller_;
+    CandleChartView* chart_view_ = nullptr;
 
 };
 

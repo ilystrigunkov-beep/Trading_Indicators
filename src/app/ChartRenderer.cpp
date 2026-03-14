@@ -28,7 +28,7 @@ void ChartRenderer::render_summary(const std::vector<double>& prices,
                                    const std::vector<double>& sma_fast,
                                    const std::vector<double>& sma_slow,
                                    const std::vector<indicators::Crossover>& crossovers,
-                                   const analysis::DetectionResult& spikes) const {
+                                   const analysis::DetectionOutcome& spikes) const {
     std::cout << "=== Price & Indicator Summary ===\n";
 
     print_series("Prices     ", prices, 20);
@@ -43,21 +43,17 @@ void ChartRenderer::render_summary(const std::vector<double>& prices,
         std::cout << "  index=" << sig.index << " type=" << type << '\n';
     }
 
-    std::visit(
-        [](const auto& result) {
-            using ResultType = std::decay_t<decltype(result)>;
-            if constexpr (std::is_same_v<ResultType, analysis::SpikeList>) {
-                std::cout << "\nSpikes (" << result.size() << "):\n";
-                for (const auto& spike : result) {
-                    std::cout << "  index=" << spike.index
-                              << " change=" << std::fixed << std::setprecision(2)
-                              << spike.change_pct << "%\n";
-                }
-            } else {
-                std::cout << "\nSpikes: unavailable (" << result << ")\n";
-            }
-        },
-        spikes);
+    if (spikes.has_value()) {
+        const auto& spike_list = spikes.value();
+        std::cout << "\nSpikes (" << spike_list.size() << "):\n";
+        for (const auto& spike : spike_list) {
+            std::cout << "  index=" << spike.index
+                      << " change=" << std::fixed << std::setprecision(2)
+                      << spike.change_pct << "%\n";
+        }
+    } else {
+        std::cout << "\nSpikes: unavailable (" << spikes.error() << ")\n";
+    }
 
     std::cout << "\n(For real plotting, these series can be exported to a file\n"
                  "and visualized with GNUPlot or matplotlib.)\n";
