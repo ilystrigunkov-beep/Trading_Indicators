@@ -1,0 +1,25 @@
+.idea/
+.vscode/
+
+*.exe
+*.out
+*.o
+*.a
+
+cmake-build-debug/
+cmake-build-release/
+build/
+
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Makefile
+
+
+.clang-format
+.clang-tidy
+
+# *.csv~
+/data_5years/
+# data_1year/
