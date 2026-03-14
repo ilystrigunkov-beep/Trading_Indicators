@@ -6,7 +6,7 @@
 #define TRADING_INDICATORS_TIMESERIES_H
 
 
-#include "Candle.h"
+#include "Candle.hpp"
 #include <cstddef>
 #include <span>
 #include <vector>
