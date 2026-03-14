@@ -7,5 +7,36 @@ add_library(core
 
 target_include_directories(core
         PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_SOURCE_DIR}/include
+)
+
+add_library(indicators
+        indicators/MovingAverage.cpp
+        indicators/RSI.cpp
+        indicators/DoubleMA.cpp
+)
+
+target_include_directories(indicators
+        PUBLIC
+        ${CMAKE_SOURCE_DIR}/include
+)
+
+target_link_libraries(indicators
+        PUBLIC
+        core
+)
+
+add_library(analysis
+        analysis/SpikeDetector.cpp
+        analysis/Statistics.cpp
+)
+
+target_include_directories(analysis
+        PUBLIC
+        ${CMAKE_SOURCE_DIR}/include
+)
+
+target_link_libraries(analysis
+        PUBLIC
+        core
 )

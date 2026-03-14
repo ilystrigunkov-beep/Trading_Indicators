@@ -1,39 +1,43 @@
-cmake_minimum_required(VERSION 3.20)
+include(FetchContent)
 
-if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-    project(TradingIndicatorsTests LANGUAGES CXX)
-endif()
+FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/refs/tags/v1.15.2.zip
+)
 
-get_filename_component(PROJECT_ROOT "${CMAKE_CURRENT_LIST_DIR}/.." ABSOLUTE)
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-find_package(GTest REQUIRED)
+FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-if (NOT TARGET analysis)
-    add_library(analysis
-            ${PROJECT_ROOT}/src/analysis/SpikeDetector.cpp
-            ${PROJECT_ROOT}/src/analysis/Statistics.cpp
-    )
+add_executable(indicators_tests
+        indicators_tests.cpp)
 
-    target_include_directories(analysis
-            PUBLIC
-            ${PROJECT_ROOT}/include
-    )
-endif()
+target_link_libraries(indicators_tests
+        PRIVATE
+        GTest::gtest_main
+        indicators
+        core)
 
 add_executable(analysis_tests
-        analysis_tests.cpp
-)
+        analysis_tests.cpp)
 
 target_link_libraries(analysis_tests
         PRIVATE
         GTest::gtest_main
         analysis
-)
+        core)
+
+add_executable(core_tests
+        core_tests.cpp)
+
+target_link_libraries(core_tests
+        PRIVATE
+        GTest::gtest_main
+        core)
 
 include(GoogleTest)
+gtest_discover_tests(indicators_tests)
 gtest_discover_tests(analysis_tests)
+gtest_discover_tests(core_tests)

@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-
 #include "core/CsvLoader.hpp"
 #include "core/Exceptions.hpp"
 #include "core/TimeSeries.hpp"

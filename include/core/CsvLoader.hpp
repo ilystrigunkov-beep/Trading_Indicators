@@ -5,7 +5,7 @@
 #ifndef TRADING_INDICATORS_CSVLOADER_H
 #define TRADING_INDICATORS_CSVLOADER_H
 
-#include "TimeSeries.h"
+#include "TimeSeries.hpp"
 #include <memory>
 #include <string>
 

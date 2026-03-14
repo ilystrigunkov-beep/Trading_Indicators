@@ -1,5 +1,5 @@
 #pragma once
-#include "Analyzer.h"
+#include "Analyzer.hpp"
 #include <cstddef>
 #include <expected>
 #include <memory>

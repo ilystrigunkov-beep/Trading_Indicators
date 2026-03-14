@@ -1,26 +1,20 @@
-cmake_minimum_required(VERSION 3.31)
-project(Trading_Indicators)
+cmake_minimum_required(VERSION 3.20)
+project(Trading_Indicators 
+        VERSION 1.0.0
+        LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include(CTest)
+# Qt automoc setup
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 add_subdirectory(src)
-add_executable(Trading_Indicators main.cpp)
-target_link_libraries(Trading_Indicators
-        PRIVATE
-        analysis
-)
 
-if (BUILD_TESTING)
+add_subdirectory(app)
+
+option(BUILD_TESTING "Build tests" OFF)
+if(BUILD_TESTING)
     add_subdirectory(tests)
 endif()
-add_executable(Trading_Indicators main.cpp
-        src/core/CsvLoader.cpp
-        include/core/CsvLoader.h
-        src/core/Exceptions.cpp
-        include/core/Exceptions.h
-        src/core/Candle.cpp
-        include/core/Candle.h
-        src/core/TimeSeries.cpp
-        include/core/TimeSeries.h)
