@@ -19,7 +19,7 @@ public:
                         const std::vector<double>& sma_fast,
                         const std::vector<double>& sma_slow,
                         const std::vector<indicators::Crossover>& crossovers,
-                        const analysis::DetectionResult& spikes) const;
+                        const analysis::DetectionOutcome& spikes) const;
 
 private:
     static void print_series(const char* name,

@@ -174,8 +174,4 @@ namespace core {
         return series;
     }
 
-
-
-
-
 }
