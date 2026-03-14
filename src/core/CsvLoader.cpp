@@ -136,27 +136,27 @@ namespace core {
                 continue;
 
             if (first_line) {
-                first_line = false;
+                first_line =false;
                 continue;
             }
 
-            auto tokens = split(line, delimiter);
+            auto tokens =split(line,delimiter);
 
             if (tokens.size() < 6)
                 continue;
 
             try {
 
-                auto timestamp_opt = parse_date_to_unix(tokens[0]);
+                auto timestamp_opt =parse_date_to_unix(tokens[0]);
                 if (!timestamp_opt)
                     continue;
 
-                double close = parse_double(tokens[1], "close");
-                double open  = parse_double(tokens[3], "open");
-                double high  = parse_double(tokens[4], "high");
-                double low   = parse_double(tokens[5], "low");
+                double close =parse_double(tokens[1], "close");
+                double open  =parse_double(tokens[3], "open");
+                double high  =parse_double(tokens[4], "high");
+                double low   =parse_double(tokens[5], "low");
 
-                auto time_point = std::chrono::sys_seconds(
+                auto time_point =std::chrono::sys_seconds(
                     std::chrono::seconds(timestamp_opt.value())
                 );
 
