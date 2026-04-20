@@ -1,4 +1,3 @@
-[ARCHITECTURE.md](https://github.com/user-attachments/files/26909239/ARCHITECTURE.md)
 # OurProject - Architecture Documentation
 
 ## 📋 Overview
